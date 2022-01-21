@@ -7,50 +7,62 @@
  */
 
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Button, TextInput } from 'react-native';
 import Header from './src/header';
 import Generator from './src/generator';
 import NumList from './src/numlist';
+import Input from './src/input';
 
 class App extends Component {
 
   state = {
-    appName: 'My First App',
-    random: [36, 999]
+    myTextInput: '',
+    alphabet: ['a', 'b', 'c', 'd']
   }
 
-  onAddRandomNum = () => {
-    const randomNum = Math.floor(Math.random() * 100) + 1;
+  onChangeInput = (event) => {
+    this.setState({
+      myTextInput: event
+    })
+  }
+
+  onAddTextInput = () => {
     this.setState(prevState => {
       return {
-        random: [...prevState.random, randomNum]
+        myTextInput: '',
+        alphabet: [...prevState.alphabet, prevState.myTextInput]
       }
-    })
-  }
-
-  onNumDelete = (position) => {
-    const newArray = this.state.random.filter((num, index) => {
-      return position != index;
-    })
-    this.setState({
-      random: newArray
     })
   }
 
   render() {
     return (
       <View style={styles.mainView}>
-        <Header name={this.state.appName} />
-        <View>
-          <Text
-            style={styles.mainText}
-            onPress={() => alert('text touch event')}
-          >Hello World</Text>
-        </View>
-        <Generator add={this.onAddRandomNum} />
-        <NumList
-          num={this.state.random}
-          delete={this.onNumDelete} />
+        <TextInput
+          value={this.state.myTextInput}
+          style={styles.input}
+          onChangeText={this.onChangeInput}
+          multiline={true}
+          maxLength={100}
+          autoCapitalize={'none'}
+          editable={true}
+        />
+        <Button
+          title="Add Text Input"
+          onPress={this.onAddTextInput}
+        />
+        <ScrollView style={{ width: '100%' }}>
+          {
+            this.state.alphabet.map((item, idx) => (
+              <Text
+                style={styles.mainText}
+                key={idx}
+              >
+                {item}
+              </Text>
+            ))
+          }
+        </ScrollView>
       </View>
     )
   }
@@ -80,7 +92,16 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'normal',
     color: 'red',
-    padding: 20
+    padding: 20,
+    margin: 20,
+    backgroundColor: 'pink'
+  },
+  input: {
+    width: '100%',
+    backgroundColor: '#cecece',
+    marginTop: 20,
+    fontSize: 25,
+    padding: 10
   }
 })
 
