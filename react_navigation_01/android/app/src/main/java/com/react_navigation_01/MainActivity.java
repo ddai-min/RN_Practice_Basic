@@ -1,3 +1,5 @@
+import android.os.Bundle;
+
 package com.react_navigation_01;
 
 import com.facebook.react.ReactActivity;
@@ -11,5 +13,9 @@ public class MainActivity extends ReactActivity {
   @Override
   protected String getMainComponentName() {
     return "react_navigation_01";
+  }
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(null);
   }
 }
