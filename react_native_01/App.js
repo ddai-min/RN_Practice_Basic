@@ -41,8 +41,7 @@ class App extends Component {
   render() {
     return (
       <View style={styles.mainView}>
-        <Modal
-        />
+        <Modal />
       </View>
     )
   }
