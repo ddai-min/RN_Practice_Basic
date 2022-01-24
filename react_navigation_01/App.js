@@ -6,15 +6,21 @@
  * @flow strict-local
  */
 
-import React from 'react'
+import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/native-stack'
+
+const Stack = createStackNavigator()
 
 class App extends Component {
   render() {
     return (
-      <View>
-        <Text>Hello World</Text>
-      </View>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen />
+        </Stack.Navigator>
+      </NavigationContainer>
     )
   }
 }

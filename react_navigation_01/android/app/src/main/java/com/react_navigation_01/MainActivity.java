@@ -1,5 +1,3 @@
-import android.os.Bundle;
-
 package com.react_navigation_01;
 
 import com.facebook.react.ReactActivity;
