@@ -14,8 +14,4 @@ public class MainActivity extends ReactActivity {
   protected String getMainComponentName() {
     return "react_navigation_01";
   }
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(null);
-  }
 }
