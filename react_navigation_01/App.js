@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, Image } from 'react-native'
+import { StyleSheet, View, Text, Image, Button } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import HomeScreen from './src/home'
@@ -46,7 +46,14 @@ class App extends Component {
             component={HomeScreen}
             options={{
               title: 'Home Screen',
-              headerTitle: <LogoTitle />
+              headerTitle: <LogoTitle />,
+              headerRight: () => (
+                <Button
+                  title="Info"
+                  onPress={() => alert('I am a button!')}
+                  color="orange"
+                />
+              )
             }}
           />
           <Stack.Screen
