@@ -27,6 +27,7 @@ import TabUserScreen from './src/user_tab'
 import TabMessageScreen from './src/message_tab'
 import PictogramHome from './src/assets/pics/home_icon.png'
 import SideDrawer from './src/my_drawer'
+import Icon from 'react-native-vector-icons/dist/Ionicons'
 
 const Stack = createNativeStackNavigator()
 const Drawer = createDrawerNavigator()
@@ -34,21 +35,21 @@ const Tab = createBottomTabNavigator()
 
 const TabBarIcon = (focused, name) => {
   let iconImagePath
+  let iconName, iconSize
 
   if (name === 'Home') {
-    iconImagePath = require('./src/assets/pics/home_icon.png')
+    iconName = 'home-outline'
+    // iconImagePath = require('./src/assets/pics/home_icon.png')
   } else if (name === 'User') {
-    iconImagePath = require('./src/assets/pics/user.png')
+    iconName = 'people-outline'
+    // iconImagePath = require('./src/assets/pics/user.png')
   } else if (name === 'Message') {
-    iconImagePath = require('./src/assets/pics/message.png')
+    iconName = 'mail-outline'
+    // iconImagePath = require('./src/assets/pics/message.png')
   }
 
-  return (
-    <Image
-      style={{ width: focused ? 24 : 20, height: focused ? 24 : 20 }}
-      source={iconImagePath}
-    />
-  )
+  iconSize = focused ? 30 : 20
+  return <Icon name={iconName} size={iconSize} />
 }
 
 // const CustomDrawerContent = props => {
