@@ -22,23 +22,24 @@ import LogoTitle from './src/logo'
 import DrawerHomeScreen from './src/home_drawer'
 import DrawerUserScreen from './src/user_drawer'
 import PictogramHome from './src/assets/pics/home_icon.png'
+import SideDrawer from './src/my_drawer'
 
 const Stack = createNativeStackNavigator()
 const Drawer = createDrawerNavigator()
 
-const CustomDrawerContent = props => {
-  return (
-    <DrawerContentScrollView {...props}>
-      <DrawerItemList {...props} />
-      <DrawerItem
-        label="Help"
-        onPress={() => Linking.openURL('http://www.google.com')}
-        icon={() => <LogoTitle />}
-      />
-      <DrawerItem label="Info" onPress={() => alert('Info Window')} />
-    </DrawerContentScrollView>
-  )
-}
+// const CustomDrawerContent = props => {
+//   return (
+//     <DrawerContentScrollView {...props}>
+//       <DrawerItemList {...props} />
+//       <DrawerItem
+//         label="Help"
+//         onPress={() => Linking.openURL('http://www.google.com')}
+//         icon={() => <LogoTitle />}
+//       />
+//       <DrawerItem label="Info" onPress={() => alert('Info Window')} />
+//     </DrawerContentScrollView>
+//   )
+// }
 
 class App extends Component {
   // logoTitle = () => {
@@ -59,13 +60,13 @@ class App extends Component {
             drawerType: 'front',
             drawerPosition: 'right',
             drawerStyle: {
-              backgroundColor: '#c6cbef',
-              width: 200
+              backgroundColor: '#c6cbef'
+              // width: 200
             },
             drawerActiveTintColor: 'red',
             drawerActiveBackgroundColor: 'skyblue'
           }}
-          drawerContent={props => <CustomDrawerContent {...props} />}>
+          drawerContent={props => <SideDrawer {...props} />}>
           <Drawer.Screen
             name="Home"
             component={DrawerHomeScreen}
