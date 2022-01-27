@@ -5529,12 +5529,17 @@
     "jscodeshift" "^0.11.0"
     "nullthrows" "^1.1.1"
 
+"react-native-contacts@^7.0.3":
+  "integrity" "sha512-4favQKHnm3boukTbroFoIt9fyDtrJ4kFSTgeMaUk7oxukts+S+By1M5eJU13cizkQZHqL1sM8SOkKdy4N4Og+w=="
+  "resolved" "https://registry.npmjs.org/react-native-contacts/-/react-native-contacts-7.0.3.tgz"
+  "version" "7.0.3"
+
 "react-native-image-picker@^2.3.4":
   "integrity" "sha512-4UHu+zOyDT570r5mIbjH6h1iMrKIq/qfsKiAVUEZwncVegh0usJiEYNyJw4CEVwNeehmye/ia5sLDsa+kzIE4g=="
   "resolved" "https://registry.npmjs.org/react-native-image-picker/-/react-native-image-picker-2.3.4.tgz"
   "version" "2.3.4"
 
-"react-native@*", "react-native@0.67.1":
+"react-native@*", "react-native@>=0.64.0", "react-native@0.67.1":
   "integrity" "sha512-doKN9qhtjilF+6p8603OVzqGKL4fq8EDAH5u00KPmZbL5ampHDQX9y8/uwlUvJggvHwZXlnvhW63u8Y1LA8rxw=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.67.1.tgz"
   "version" "0.67.1"

@@ -9,6 +9,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, Image, Button } from 'react-native'
 import ImagePicker from 'react-native-image-picker'
+import Contacts from 'react-native-contacts'
 
 class App extends Component {
   state = {
