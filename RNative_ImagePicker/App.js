@@ -7,37 +7,65 @@
  */
 
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, Image, Button } from 'react-native'
+import {
+  Platform,
+  PermissionsAndroid,
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  Button
+} from 'react-native'
 import ImagePicker from 'react-native-image-picker'
 import Contacts from 'react-native-contacts'
 
 class App extends Component {
-  state = {
-    avatar: ''
+  async requestContactPermission() {
+    if (Platform.OS === 'ios') {
+      console.warn('iOS')
+      return true
+    } else {
+      console.warn('Android')
+
+      const granted = await PermissionsAndroid.requestMultiple([
+        PermissionsAndroid.PERMISSIONS.WRITE_CONTACTS,
+        PermissionsAndroid.PERMISSIONS.READ_CONTACTS
+      ])
+
+      if (
+        granted['android.permission.READ_CONTACTS'] ===
+          PermissionsAndroid.RESULTS.GRANTED &&
+        granted['android.permission.WRITE_CONTACTS'] ===
+          PermissionsAndroid.RESULTS.GRANTED
+      ) {
+        return true
+      } else {
+        return false
+      }
+    }
   }
 
-  addImage = () => {
-    ImagePicker.showImagePicker(
-      {
-        title: 'Choose your photo',
-        takePhotoButtonTitle: 'Take a pretty one',
-        chooseFromLibraryButtonTitle: 'Select an old one',
-        cancelButtonTitle: 'Just go back'
-      },
-      response => {
-        this.setState({
-          avatar: response.uri
-        })
+  getContacts = () => {
+    this.requestContactPermission().then(didGetPermission => {
+      if (didGetPermission) {
+        Contacts.getAll()
+          .then(contacts => {
+            console.warn(contacts)
+          })
+          .catch(err => {
+            console.error(err)
+            throw err
+          })
+      } else {
+        alert('no permission')
       }
-    )
+    })
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Image source={{ uri: this.state.avatar }} style={styles.avatar} />
-
-        <Button title="Add an Image" onPress={() => this.addImage()} />
+        <Button title="Load Contacts" onPress={() => this.getContacts()} />
       </View>
     )
   }
