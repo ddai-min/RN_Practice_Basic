@@ -101,6 +101,29 @@ class App extends Component {
     })
   }
 
+  openForm = () => {
+    const newContact = {
+      emailAddress: [
+        {
+          label: 'work',
+          email: 'aaaa@example.com'
+        }
+      ],
+      familyName: 'cccc',
+      givenName: 'dddd',
+      phoneNumbers: [
+        {
+          label: 'mobile',
+          number: '(010) 1111-1111'
+        }
+      ]
+    }
+
+    Contacts.openContactForm(newContact).catch(err => {
+      console.warn(err)
+    })
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -113,6 +136,7 @@ class App extends Component {
 
         <Button title="Load Contacts" onPress={() => this.getContacts()} />
         <Button title="Add Contacts" onPress={() => this.addContacts()} />
+        <Button title="Open Form" onPress={() => this.openForm()} />
       </View>
     )
   }
