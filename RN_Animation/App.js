@@ -8,14 +8,17 @@
 
 import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
-import AnimOne from './src/Animation01'
-import AnimTwo from './src/Animation02'
+// import AnimOne from './src/Animation01'
+// import AnimTwo from './src/Animation02'
+import Supertext from './src/utils/supertext'
 
 class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <AnimTwo />
+        <Supertext style={{ backgroundColor: 'red' }}>
+          This is my template!!!
+        </Supertext>
       </View>
     )
   }
@@ -24,8 +27,9 @@ class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    paddingTop: 50
+    backgroundColor: '#bbb',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 })
 
